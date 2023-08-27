@@ -1,0 +1,265 @@
+.game-board {
+  width: 100%;
+  height: 100vh;
+  border-bottom: 15px solid rgb(35, 160, 35);
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.score {
+  position: absolute;
+  margin-top: 20px;
+  right: 20px;
+  font-size: 26px;
+  color: #000;
+      text-shadow: 
+      -1px -1px 0px #FFF, 
+      -1px 1px 0px #FFF,                    
+      1px -1px 0px #FFF,                  
+      1px 0px 0px #FFF;
+}
+
+.scoreImg {
+  width: 8rem;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+.sound-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.top {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.middle {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottom {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content h2 {
+  font-family: "Your-Super-Mario-Font", sans-serif;
+  font-size: 32px;
+  color: #d91e1e;
+  margin-bottom: 10px;
+}
+
+.modal-content p {
+  font-family: "Your-Super-Mario-Font", sans-serif;
+  font-size: 26px;
+  color: #1e7ad9;
+  margin-bottom: 20px;
+}
+
+.modal-button {
+  background-color: #1e7ad9;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-family: "Your-Super-Mario-Font", sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.modal-button:hover {
+  background-color: #155e8c;
+}
+
+.button {
+  border: none;
+  cursor: pointer;
+}
+
+.restar {
+  width: 8rem;
+  align-items: center;
+}
+
+.pipe {
+  position: absolute;
+  bottom: 0;
+  width: 80px;
+  animation: pipe-animation 1.5s infinite linear;
+}
+
+.mario {
+  width: 150px;
+  position: absolute;
+  bottom: 0;
+}
+
+.jump {
+  animation: jump 500ms ease-out;
+}
+
+.clouds {
+  position: absolute;
+  width: 550px;
+  animation: clouds-animation 20s infinite linear;
+}
+
+@keyframes pipe-animation {
+  from  {
+    right: -80px;
+  }
+
+  to {
+    right: 100%;
+  }
+}
+
+@keyframes jump {
+  0% {
+    bottom: 0;
+  }
+  
+  40% {
+    bottom: 180px;
+  }
+
+  50% {
+    bottom: 180px;
+  }
+
+  60% {
+    bottom: 180px;
+  }
+
+  100% {
+    bottom: 0;
+  }
+}
+
+@keyframes clouds-animation {
+  from {
+    right: -550px;
+  }
+
+  to {
+    right: 100%;
+  }
+}
+
+
+
+@media screen and (max-width: 767px) {
+  .game-board {
+    border-bottom: 10px solid rgb(35, 160, 35);
+  }
+
+  .score {
+    font-size: 18px;
+  }
+
+  .modal-content h2 {
+    font-size: 24px;
+  }
+
+  .modal-content p {
+    font-size: 18px;
+  }
+
+  .modal-button {
+    font-size: 16px;
+  }
+
+  .clouds {
+    width: 300px;
+  }
+}
+
+/* Medium screens (tablets) */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .game-board {
+    border-bottom: 12px solid rgb(35, 160, 35);
+  }
+
+  .score {
+    font-size: 22px;
+  }
+
+  .modal-content h2 {
+    font-size: 28px;
+  }
+
+  .modal-content p {
+    font-size: 20px;
+  }
+
+  .modal-button {
+    font-size: 18px;
+  }
+
+  .clouds {
+    width: 400px;
+  }
+}
+
+/* Large screens (desktops) */
+@media screen and (min-width: 1024px) {
+  .game-board {
+    border-bottom: 15px solid rgb(35, 160, 35);
+  }
+
+  .score {
+    font-size: 26px;
+  }
+
+  .modal-content h2 {
+    font-size: 32px;
+  }
+
+  .modal-content p {
+    font-size: 24px;
+  }
+
+  .modal-button {
+    font-size: 20px;
+  }
+
+  .clouds {
+    width: 550px;
+  }
+}

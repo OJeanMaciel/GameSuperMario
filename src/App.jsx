@@ -106,11 +106,16 @@ useEffect(() => {
       });
     }
   }, 5000);
-  document.addEventListener('keydown', jump);
+    document.addEventListener('keydown', jump);
+    document.addEventListener('touchstart', handleTouchStart);
+    document.addEventListener('touchend', handleTouchEnd);
 
   return () => {
     clearInterval(interval, intervalTime);
     document.removeEventListener('keydown', jump);
+    document.removeEventListener('touchstart', handleTouchStart);
+    document.removeEventListener('touchend', handleTouchEnd);
+  
   };
 }, [isGameOver]);
 

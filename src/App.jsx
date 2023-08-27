@@ -29,10 +29,11 @@ function App() {
 
   const handleTouchJump = useCallback(() => {
     if (!isGameOver) {
-      mario.classList.add('jump');
+      const marioElement = document.querySelector('.mario');
+      marioElement.classList.add('jump');
 
       setTimeout(() => {
-        mario.classList.remove('jump');
+        marioElement.classList.remove('jump');
       }, 500);
     }
   }, [isGameOver]);
@@ -119,13 +120,14 @@ useEffect(() => {
   }, 5000);
   document.addEventListener('keydown', jump);
   document.addEventListener('touchstart', handleTouchJump);
-  document.addEventListener('touchend', handleTouchJump);
+  document.addEventListener('touchend', () => {});
 
   return () => {
     clearInterval(interval, intervalTime);
-    document.removeEventListener('keydown', jump);
-    document.removeEventListener('touchstart', handleTouchJump);
-    document.removeEventListener('touchend', handleTouchJump);
+    document.addEventListener('keydown', jump);
+    document.addEventListener('touchstart', handleTouchJump);
+    document.addEventListener('touchend', () => {});
+
   };
 }, [isGameOver]);
 

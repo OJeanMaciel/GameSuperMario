@@ -29,7 +29,11 @@ function App() {
 
   const handleTouchJump = useCallback(() => {
     if (!isGameOver) {
-      jump();
+      mario.classList.add('jump');
+
+      setTimeout(() => {
+        mario.classList.remove('jump');
+      }, 500);
     }
   }, [isGameOver]);
 

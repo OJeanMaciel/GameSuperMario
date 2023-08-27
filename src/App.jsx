@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { AudioMutedOutlined, AudioOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import marioTheme from '../src/assets/Theme_Super_Mario_ World.mp3';
@@ -21,10 +21,17 @@ function App() {
   const [background, setBackground] = useState("#87CEEB");
   const [pipeAnimationDuration, setPipeAnimationDuration] = useState(1.5);
   const [difficultyLevel, setDifficultyLevel] = useState(1);
+  const [touchJump, setTouchJump] = useState(false);
 
   function toggleSound() {
     setIsSoundOn(!isSoundOn);
   }
+
+  const handleTouchJump = useCallback(() => {
+    if (!isGameOver) {
+      jump();
+    }
+  }, [isGameOver]);
 
   useEffect(() => {
     const savedSoundPreference = localStorage.getItem('isSoundOn');
@@ -106,16 +113,15 @@ useEffect(() => {
       });
     }
   }, 5000);
-    document.addEventListener('keydown', jump);
-    document.addEventListener('touchstart', handleTouchStart);
-    document.addEventListener('touchend', handleTouchEnd);
+  document.addEventListener('keydown', jump);
+  document.addEventListener('touchstart', handleTouchJump);
+  document.addEventListener('touchend', handleTouchJump);
 
   return () => {
     clearInterval(interval, intervalTime);
     document.removeEventListener('keydown', jump);
-    document.removeEventListener('touchstart', handleTouchStart);
-    document.removeEventListener('touchend', handleTouchEnd);
-  
+    document.removeEventListener('touchstart', handleTouchJump);
+    document.removeEventListener('touchend', handleTouchJump);
   };
 }, [isGameOver]);
 
